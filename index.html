@@ -61,8 +61,8 @@
         }
         nav.scrolled { padding: .9rem 5%; background: rgba(5,5,8,.92); }
         .nav-logo { display: flex; align-items: center; gap: .6rem; text-decoration: none; }
-        .nav-logo-text { font-family: 'Montserrat', sans-serif; font-size: 1.05rem; font-weight: 800; letter-spacing: .15em; color: var(--white); white-space: nowrap; }
-        .nav-logo-text .logo-group { color: var(--cyan); }
+        .nav-logo-text { font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 700; letter-spacing: .18em; color: #ffffff; white-space: nowrap; }
+        .nav-logo-text .logo-group { color: var(--cyan); font-weight: 700; }
         .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
         .nav-links a {
             color: var(--muted); text-decoration: none;
@@ -346,46 +346,49 @@
     <!-- ═══════════ NAV ═══════════ -->
     <nav id="nav">
         <a href="#" class="nav-logo">
-            <svg viewBox="0 0 64 64" width="42" height="42" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0">
+            <svg viewBox="0 0 70 70" width="40" height="40" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0">
                 <defs>
-                    <radialGradient id="atmo" cx="50%" cy="50%" r="50%">
-                        <stop offset="0%" stop-color="#020210" stop-opacity="0"/>
-                        <stop offset="62%" stop-color="#0044aa" stop-opacity=".0"/>
-                        <stop offset="82%" stop-color="#1166dd" stop-opacity=".35"/>
-                        <stop offset="100%" stop-color="#2288ff" stop-opacity=".18"/>
+                    <radialGradient id="outerGlow" cx="50%" cy="50%" r="50%">
+                        <stop offset="55%" stop-color="#000010" stop-opacity="0"/>
+                        <stop offset="78%" stop-color="#1155cc" stop-opacity=".28"/>
+                        <stop offset="100%" stop-color="#3377ff" stop-opacity=".12"/>
                     </radialGradient>
-                    <radialGradient id="amber" cx="67%" cy="24%" r="44%">
-                        <stop offset="0%" stop-color="#FFD060" stop-opacity="1"/>
-                        <stop offset="30%" stop-color="#FFAA20" stop-opacity=".95"/>
-                        <stop offset="70%" stop-color="#FF7700" stop-opacity=".4"/>
+                    <radialGradient id="amberSpot" cx="66%" cy="24%" r="38%">
+                        <stop offset="0%" stop-color="#FFDD66" stop-opacity="1"/>
+                        <stop offset="28%" stop-color="#FFAA22" stop-opacity=".95"/>
+                        <stop offset="65%" stop-color="#FF7700" stop-opacity=".45"/>
                         <stop offset="100%" stop-color="#FF5500" stop-opacity="0"/>
                     </radialGradient>
-                    <radialGradient id="blue" cx="28%" cy="74%" r="50%">
-                        <stop offset="0%" stop-color="#55DDFF" stop-opacity=".95"/>
-                        <stop offset="45%" stop-color="#2299EE" stop-opacity=".7"/>
+                    <radialGradient id="blueSpot" cx="30%" cy="75%" r="42%">
+                        <stop offset="0%" stop-color="#66EEFF" stop-opacity=".9"/>
+                        <stop offset="40%" stop-color="#2299EE" stop-opacity=".65"/>
                         <stop offset="100%" stop-color="#0055CC" stop-opacity="0"/>
                     </radialGradient>
-                    <radialGradient id="planet" cx="36%" cy="30%" r="70%">
-                        <stop offset="0%" stop-color="#10102a"/>
-                        <stop offset="100%" stop-color="#040408"/>
+                    <radialGradient id="planetSurface" cx="38%" cy="32%" r="68%">
+                        <stop offset="0%" stop-color="#0d0d22"/>
+                        <stop offset="100%" stop-color="#030308"/>
                     </radialGradient>
+                    <filter id="glow">
+                        <feGaussianBlur stdDeviation="1.5" result="blur"/>
+                        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                    </filter>
                 </defs>
                 <!-- Outer atmospheric halo -->
-                <circle cx="32" cy="32" r="31" fill="url(#atmo)"/>
-                <!-- Soft blue ring -->
-                <circle cx="32" cy="32" r="27" fill="none" stroke="#2299FF" stroke-width="7" stroke-opacity=".22"/>
-                <!-- Amber corona (upper-right) -->
-                <circle cx="32" cy="32" r="27" fill="url(#amber)"/>
-                <!-- Blue corona (lower-left wrap) -->
-                <circle cx="32" cy="32" r="27" fill="url(#blue)"/>
-                <!-- Bright amber rim accent -->
-                <circle cx="32" cy="32" r="23.5" fill="none" stroke="#FFCC44" stroke-width="1.5" stroke-opacity=".55" stroke-dasharray="30 46" stroke-dashoffset="-10"/>
-                <!-- Bright blue rim accent -->
-                <circle cx="32" cy="32" r="23.5" fill="none" stroke="#44CCFF" stroke-width="1" stroke-opacity=".5" stroke-dasharray="28 48" stroke-dashoffset="25"/>
-                <!-- Planet body -->
-                <circle cx="32" cy="32" r="22" fill="url(#planet)"/>
-                <!-- N on planet -->
-                <text x="32" y="38.5" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="15" font-weight="900" fill="rgba(255,255,255,0.28)">N</text>
+                <circle cx="35" cy="35" r="34" fill="url(#outerGlow)"/>
+                <!-- Blue atmospheric rim -->
+                <circle cx="35" cy="35" r="28.5" fill="none" stroke="#2288EE" stroke-width="8" stroke-opacity=".2"/>
+                <!-- Amber corona (upper-right hot spot) -->
+                <circle cx="35" cy="35" r="29" fill="url(#amberSpot)"/>
+                <!-- Blue corona (lower-left cool wrap) -->
+                <circle cx="35" cy="35" r="29" fill="url(#blueSpot)"/>
+                <!-- Thin bright amber rim arc -->
+                <circle cx="35" cy="35" r="25.5" fill="none" stroke="#FFCC44" stroke-width="1.8" stroke-opacity=".7" stroke-dasharray="32 50" stroke-dashoffset="-8" filter="url(#glow)"/>
+                <!-- Thin bright cyan rim arc opposite side -->
+                <circle cx="35" cy="35" r="25.5" fill="none" stroke="#55DDFF" stroke-width="1.2" stroke-opacity=".6" stroke-dasharray="28 54" stroke-dashoffset="24"/>
+                <!-- Planet body — dark, covers center -->
+                <circle cx="35" cy="35" r="24" fill="url(#planetSurface)"/>
+                <!-- Very subtle N watermark — barely visible, just a texture -->
+                <text x="35" y="41" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="16" font-weight="900" fill="rgba(255,255,255,0.08)">N</text>
             </svg>
                         <span class="nav-logo-text">NOKTO&nbsp;<span class="logo-group">GROUP</span></span>
         </a>
@@ -401,7 +404,7 @@
 
     <!-- ═══════════ HERO ═══════════ -->
     <section class="hero" id="home">
-        <video id="hero-video" autoplay muted loop playsinline>
+        <video id="hero-video" autoplay muted playsinline>
             <source src="assets/nokto_hero_bg.mp4" type="video/mp4">
         </video>
         <canvas id="particles"></canvas>
@@ -622,38 +625,36 @@
     <!-- ═══════════ FOOTER ═══════════ -->
     <footer>
         <div class="footer-logo">
-            <svg viewBox="0 0 64 64" width="30" height="30" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0">
+            <svg viewBox="0 0 70 70" width="28" height="28" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0">
                 <defs>
-                    <radialGradient id="atmoF" cx="50%" cy="50%" r="50%">
-                        <stop offset="0%" stop-color="#020210" stop-opacity="0"/>
-                        <stop offset="62%" stop-color="#0044aa" stop-opacity=".0"/>
-                        <stop offset="82%" stop-color="#1166dd" stop-opacity=".35"/>
-                        <stop offset="100%" stop-color="#2288ff" stop-opacity=".18"/>
+                    <radialGradient id="outerGlowF" cx="50%" cy="50%" r="50%">
+                        <stop offset="55%" stop-color="#000010" stop-opacity="0"/>
+                        <stop offset="78%" stop-color="#1155cc" stop-opacity=".28"/>
+                        <stop offset="100%" stop-color="#3377ff" stop-opacity=".12"/>
                     </radialGradient>
-                    <radialGradient id="amberF" cx="67%" cy="24%" r="44%">
-                        <stop offset="0%" stop-color="#FFD060" stop-opacity="1"/>
-                        <stop offset="30%" stop-color="#FFAA20" stop-opacity=".95"/>
-                        <stop offset="70%" stop-color="#FF7700" stop-opacity=".4"/>
+                    <radialGradient id="amberSpotF" cx="66%" cy="24%" r="38%">
+                        <stop offset="0%" stop-color="#FFDD66" stop-opacity="1"/>
+                        <stop offset="28%" stop-color="#FFAA22" stop-opacity=".95"/>
+                        <stop offset="65%" stop-color="#FF7700" stop-opacity=".45"/>
                         <stop offset="100%" stop-color="#FF5500" stop-opacity="0"/>
                     </radialGradient>
-                    <radialGradient id="blueF" cx="28%" cy="74%" r="50%">
-                        <stop offset="0%" stop-color="#55DDFF" stop-opacity=".95"/>
-                        <stop offset="45%" stop-color="#2299EE" stop-opacity=".7"/>
+                    <radialGradient id="blueSpotF" cx="30%" cy="75%" r="42%">
+                        <stop offset="0%" stop-color="#66EEFF" stop-opacity=".9"/>
+                        <stop offset="40%" stop-color="#2299EE" stop-opacity=".65"/>
                         <stop offset="100%" stop-color="#0055CC" stop-opacity="0"/>
                     </radialGradient>
-                    <radialGradient id="planetF" cx="36%" cy="30%" r="70%">
-                        <stop offset="0%" stop-color="#10102a"/>
-                        <stop offset="100%" stop-color="#040408"/>
+                    <radialGradient id="planetSurfaceF" cx="38%" cy="32%" r="68%">
+                        <stop offset="0%" stop-color="#0d0d22"/>
+                        <stop offset="100%" stop-color="#030308"/>
                     </radialGradient>
                 </defs>
-                <circle cx="32" cy="32" r="31" fill="url(#atmoF)"/>
-                <circle cx="32" cy="32" r="27" fill="none" stroke="#2299FF" stroke-width="7" stroke-opacity=".22"/>
-                <circle cx="32" cy="32" r="27" fill="url(#amberF)"/>
-                <circle cx="32" cy="32" r="27" fill="url(#blueF)"/>
-                <circle cx="32" cy="32" r="23.5" fill="none" stroke="#FFCC44" stroke-width="1.5" stroke-opacity=".55" stroke-dasharray="30 46" stroke-dashoffset="-10"/>
-                <circle cx="32" cy="32" r="23.5" fill="none" stroke="#44CCFF" stroke-width="1" stroke-opacity=".5" stroke-dasharray="28 48" stroke-dashoffset="25"/>
-                <circle cx="32" cy="32" r="22" fill="url(#planetF)"/>
-                <text x="32" y="38.5" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="15" font-weight="900" fill="rgba(255,255,255,0.28)">N</text>
+                <circle cx="35" cy="35" r="34" fill="url(#outerGlowF)"/>
+                <circle cx="35" cy="35" r="28.5" fill="none" stroke="#2288EE" stroke-width="8" stroke-opacity=".2"/>
+                <circle cx="35" cy="35" r="29" fill="url(#amberSpotF)"/>
+                <circle cx="35" cy="35" r="29" fill="url(#blueSpotF)"/>
+                <circle cx="35" cy="35" r="25.5" fill="none" stroke="#FFCC44" stroke-width="1.8" stroke-opacity=".7" stroke-dasharray="32 50" stroke-dashoffset="-8"/>
+                <circle cx="35" cy="35" r="25.5" fill="none" stroke="#55DDFF" stroke-width="1.2" stroke-opacity=".6" stroke-dasharray="28 54" stroke-dashoffset="24"/>
+                <circle cx="35" cy="35" r="24" fill="url(#planetSurfaceF)"/>
             </svg>
                         <span class="footer-logo-text">NOKTO&nbsp;<span class="logo-group">GROUP</span></span>
         </div>

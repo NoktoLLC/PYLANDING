@@ -6,7 +6,7 @@
     <title>Nokto Group — Eclipse the Competition</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <style>
@@ -20,8 +20,8 @@
             --purple:  #9B5DE5;
             --white:   #FFFFFF;
             --muted:   rgba(255,255,255,0.5);
-            --font-display: 'Syne', sans-serif;
-            --font-body:    'Space Grotesk', sans-serif;
+            --font-display: 'Montserrat', sans-serif;
+            --font-body:    'Inter', sans-serif;
         }
 
         html { scroll-behavior: smooth; }
@@ -60,12 +60,9 @@
             transition: padding .3s, background .3s;
         }
         nav.scrolled { padding: .9rem 5%; background: rgba(5,5,8,.92); }
-        .nav-logo {
-            font-family: var(--font-display);
-            font-size: 1.35rem; font-weight: 800; letter-spacing: .18em;
-            text-decoration: none; color: var(--white);
-        }
-        .nav-logo span { color: var(--cyan); }
+        .nav-logo { display: flex; align-items: center; gap: .6rem; text-decoration: none; }
+        .nav-logo-text { font-family: 'Montserrat', sans-serif; font-size: 1.05rem; font-weight: 800; letter-spacing: .15em; color: var(--white); white-space: nowrap; }
+        .nav-logo-text .logo-group { color: var(--cyan); }
         .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
         .nav-links a {
             color: var(--muted); text-decoration: none;
@@ -87,7 +84,7 @@
         /* ── HERO ── */
         .hero {
             position: relative; height: 100vh; min-height: 680px;
-            display: flex; align-items: center; justify-content: center; overflow: hidden;
+            display: flex; align-items: center; justify-content: center; overflow: clip;
         }
         #hero-video {
             position: absolute; inset: 0; width: 100%; height: 100%;
@@ -111,9 +108,10 @@
             opacity: 0; transform: translateY(16px);
         }
         .hero-title {
-            font-family: var(--font-display);
-            font-size: clamp(3.2rem, 7.5vw, 7rem);
-            font-weight: 800; line-height: 1.04; margin-bottom: 1rem;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(4rem, 10vw, 10rem);
+            font-weight: 400; line-height: .98; margin-bottom: 1rem;
+            letter-spacing: .04em;
             opacity: 0; transform: translateY(24px);
         }
         .hero-title .line-1 { display: block; }
@@ -289,7 +287,7 @@
         .mock-before-p    { font-size: .82rem; color: rgba(255,255,255,.22); text-align: center; max-width: 280px; }
         .mock-before-tag  { font-size: .58rem; letter-spacing: .12em; color: rgba(255,255,255,.18); text-transform: uppercase; }
         .mock-after-h {
-            font-family: var(--font-display); font-size: 1.7rem; font-weight: 800; text-align: center;
+            font-family: "Montserrat", sans-serif; font-size: 1.7rem; font-weight: 800; text-align: center;
             background: linear-gradient(135deg, var(--cyan), var(--purple));
             -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
@@ -315,8 +313,9 @@
             padding: 2.5rem 5%; border-top: 1px solid var(--border);
             display: flex; align-items: center; justify-content: space-between;
         }
-        .footer-logo { font-family: var(--font-display); font-weight: 800; letter-spacing: .18em; font-size: 1.05rem; }
-        .footer-logo span { color: var(--cyan); }
+        .footer-logo { display: flex; align-items: center; gap: .55rem; }
+        .footer-logo-text { font-family: 'Montserrat', sans-serif; font-weight: 800; letter-spacing: .14em; font-size: .95rem; color: var(--white); white-space: nowrap; }
+        .footer-logo-text .logo-group { color: var(--cyan); }
         .footer-copy { font-size: .75rem; color: rgba(255,255,255,.25); }
 
         /* ── RESPONSIVE ── */
@@ -344,7 +343,26 @@
 
     <!-- ═══════════ NAV ═══════════ -->
     <nav id="nav">
-        <a href="#" class="nav-logo">NOKTO <span>GROUP</span></a>
+        <a href="#" class="nav-logo">
+            <svg viewBox="0 0 38 38" width="34" height="34" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0">
+                <defs>
+                    <radialGradient id="corona" cx="68%" cy="22%" r="58%">
+                        <stop offset="0%" stop-color="#FFA040" stop-opacity="1"/>
+                        <stop offset="38%" stop-color="#00E5FF" stop-opacity=".9"/>
+                        <stop offset="100%" stop-color="#00E5FF" stop-opacity="0"/>
+                    </radialGradient>
+                    <radialGradient id="atmo" cx="70%" cy="18%" r="80%">
+                        <stop offset="0%" stop-color="#00E5FF" stop-opacity=".25"/>
+                        <stop offset="100%" stop-color="#00E5FF" stop-opacity="0"/>
+                    </radialGradient>
+                </defs>
+                <circle cx="19" cy="19" r="17" fill="url(#atmo)"/>
+                <circle cx="19" cy="19" r="13" fill="#06060e"/>
+                <circle cx="19" cy="19" r="13" fill="none" stroke="url(#corona)" stroke-width="2.8"/>
+                <text x="19" y="24" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="11" font-weight="900" fill="rgba(255,255,255,0.42)">N</text>
+            </svg>
+            <span class="nav-logo-text">NOKTO&nbsp;<span class="logo-group">GROUP</span></span>
+        </a>
         <ul class="nav-links">
             <li><a href="#services">Services</a></li>
             <li><a href="#portfolio">Work</a></li>
@@ -577,7 +595,26 @@
 
     <!-- ═══════════ FOOTER ═══════════ -->
     <footer>
-        <div class="footer-logo">NOKTO <span>GROUP</span></div>
+        <div class="footer-logo">
+            <svg viewBox="0 0 38 38" width="26" height="26" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0">
+                <defs>
+                    <radialGradient id="coronaF" cx="68%" cy="22%" r="58%">
+                        <stop offset="0%" stop-color="#FFA040" stop-opacity="1"/>
+                        <stop offset="38%" stop-color="#00E5FF" stop-opacity=".9"/>
+                        <stop offset="100%" stop-color="#00E5FF" stop-opacity="0"/>
+                    </radialGradient>
+                    <radialGradient id="atmoF" cx="70%" cy="18%" r="80%">
+                        <stop offset="0%" stop-color="#00E5FF" stop-opacity=".25"/>
+                        <stop offset="100%" stop-color="#00E5FF" stop-opacity="0"/>
+                    </radialGradient>
+                </defs>
+                <circle cx="19" cy="19" r="17" fill="url(#atmoF)"/>
+                <circle cx="19" cy="19" r="13" fill="#06060e"/>
+                <circle cx="19" cy="19" r="13" fill="none" stroke="url(#coronaF)" stroke-width="2.8"/>
+                <text x="19" y="24" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="11" font-weight="900" fill="rgba(255,255,255,0.42)">N</text>
+            </svg>
+            <span class="footer-logo-text">NOKTO&nbsp;<span class="logo-group">GROUP</span></span>
+        </div>
         <p class="footer-copy">© 2026 Nokto Group. All rights reserved.</p>
     </footer>
 

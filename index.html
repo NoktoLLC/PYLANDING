@@ -409,6 +409,13 @@
         <video id="hero-video" autoplay muted playsinline>
             <source src="assets/nokto_hero_bg.mp4" type="video/mp4">
         </video>
+        <script>
+            var heroVideo = document.getElementById('hero-video');
+            heroVideo.addEventListener('ended', function() {
+                heroVideo.currentTime = heroVideo.duration - 0.001;
+                heroVideo.pause();
+            });
+        </script>
         <canvas id="particles"></canvas>
         <div class="hero-overlay"></div>
 
